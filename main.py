@@ -22,7 +22,7 @@ app.add_middleware(
 )
 
 destination_points = get_destinations()
-N_BEAM = 1000
+N_BEAM = 10
 
 
 @app.get("/findpath")
