@@ -11,7 +11,7 @@ requires-python = ">=3.9"
 license = "MIT"
 keywords = []
 authors = [
-  { name = "U.N. Owen", email = "void@some.where" },
+  { name = "Jiwon Choi", email = "jiwnchoi@gmail.com" },
 ]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -23,16 +23,16 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["networkx", "numpy", "fastapi[standard]", "requests"]
+dependencies = ["networkx", "numpy", "fastapi[standard]", "requests", "pydantic"]
 
 [project.optional-dependencies]
 dev = ["ruff", "pyright", "pytest", "pytest-cov"]
 
 
 [project.urls]
-Documentation = "https://github.com/unknown/pathfinding#readme"
-Issues = "https://github.com/unknown/pathfinding/issues"
-Source = "https://github.com/unknown/pathfinding"
+Documentation = "https://github.com/JA2024-GABOJA/pathfinding#readme"
+Issues = "https://github.com/JA2024-GABOJA/pathfinding/issues"
+Source = "https://github.com/JA2024-GABOJA/pathfinding"
 
 [tool.hatch.version]
 path = "pathfinding/__about__.py"
@@ -51,14 +51,17 @@ cov = [
 ]
 
 [[tool.hatch.envs.all.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+python = ["3.9", "3.10", "3.11", "3.12"]
 
-[tool.hatch.envs.types]
-dependencies = [
-  "mypy>=1.0.0",
+[tool.pyright]
+include = ["src/**/*.py"]
+exclude = ["**/node_modules",
+    "**/__pycache__",
+    "src/experimental",
+    "src/typestubs"
 ]
-[tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:pathfinding tests}"
+reportMissingImports = true
+reportMissingTypeStubs = false
 
 [tool.coverage.run]
 source_pkgs = ["pathfinding", "tests"]
@@ -141,3 +144,6 @@ skip-magic-trailing-comma = false
 
 # Like Black, automatically detect the appropriate line ending.
 line-ending = "auto"
+
+[tool.hatch.envs.test.scripts]
+cov = 'pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=pkg --cov=tests'
