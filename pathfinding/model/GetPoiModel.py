@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Literal
 
 from pydantic import BaseModel
@@ -8,7 +10,7 @@ class PoiModel(BaseModel):
   geom: str
   longitude: float
   latitude: float
-  classname: Literal["trash", "crack", "banner", "pothole"]
+  classname: Literal["trash", "crack", "banner", "pothole"] | str
   time: str
   # img_received: bool
   # utm_x: float

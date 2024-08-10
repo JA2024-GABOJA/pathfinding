@@ -23,7 +23,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["networkx", "numpy", "fastapi[standard]", "requests", "pydantic"]
+dependencies = ["networkx", "numpy", "fastapi[standard]", "requests", "pydantic", "pandas"]
 
 [project.optional-dependencies]
 dev = ["ruff", "pyright", "pytest", "pytest-cov"]

@@ -5,11 +5,11 @@ from pathfinding.model import (
   GetPoiDataResponseModel,
   PointModel,
 )
-from pathfinding.util.requests import Request
+from pathfinding.util import Request
 
 
 @lru_cache(maxsize=None)
-def get_trash_points(startDate: str, endDate: str) -> list[PointModel]:
+def get_trashes(startDate: str, endDate: str) -> list[PointModel]:
   response = Request(GetPoiDataResponseModel).post(
     "http://webviewer.mobiltech.io:18084/poviewer/GetPoiData",
     GetPoiDataRequestModel(startDate=startDate, endDate=endDate),
