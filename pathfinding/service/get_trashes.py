@@ -15,7 +15,9 @@ def get_trashes(startDate: str, endDate: str) -> list[PointModel]:
     GetPoiDataRequestModel(startDate=startDate, endDate=endDate),
   )
   return [
-    PointModel(latitude=r.latitude, longitude=r.longitude, type="target")
+    PointModel(
+      id=r.id, latitude=r.latitude, longitude=r.longitude, type="target"
+    )
     for r in response.rows
     if r.classname == "trash"
   ]
